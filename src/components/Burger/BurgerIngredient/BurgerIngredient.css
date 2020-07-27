@@ -110,3 +110,17 @@
   background: linear-gradient(#bf3813, #c45e38);
   margin: 2% auto;
 }
+
+.Mayo {
+  width: 80%;
+  height: 1%;
+  background: linear-gradient(#d4e0b1, #e6e78e);
+  margin: 2% auto;
+}
+
+.Ketchup {
+  width: 80%;
+  height: 1%;
+  background: linear-gradient(#be0a0a, #c40505);
+  margin: 2% auto;
+}
