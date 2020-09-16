@@ -51,28 +51,44 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    // alert("You chose continue");
+    // // alert("You chose continue");
+    // this.setState({ loading: true });
+    // console.log(this.state.loading);
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: "Anil Alon",
+    //     address: {
+    //       street: "Derech Eylot 14",
+    //       zipCode: "5591170",
+    //       country: "Israel",
+    //     },
+    //     email: "anil.alon@test.com",
+    //   },
+    //   deliveryMethod: "fastest",
+    // };
+    // axios
+    //   .post("/orders.json", order)
+    //   .then((response) => this.setState({ loading: false, purchasing: false }))
+    //   .catch((error) => this.setState({ loading: false, purchasing: false }));
 
-    this.setState({ loading: true });
-    console.log(this.state.loading);
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: "Anil Alon",
-        address: {
-          street: "Derech Eylot 14",
-          zipCode: "5591170",
-          country: "Israel",
-        },
-        email: "anil.alon@test.com",
-      },
-      deliveryMethod: "fastest",
-    };
-    axios
-      .post("/orders.json", order)
-      .then((response) => this.setState({ loading: false, purchasing: false }))
-      .catch((error) => this.setState({ loading: false, purchasing: false }));
+    const queryParams = [];
+    for (let i in this.state.ingredients) {
+      queryParams.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.ingredients[i])
+      );
+    }
+    console.log(this.state.ingredients);
+    console.log("anil");
+    const queryString = queryParams.join("&");
+    console.log(queryString);
+    this.props.history.push({
+      pathname: "/checkout",
+      search: "?" + queryString,
+    });
   };
 
   checkPurchaseable = (ingredients) => {
