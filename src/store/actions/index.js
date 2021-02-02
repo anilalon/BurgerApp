@@ -8,3 +8,6 @@ export {
     purchaseBurgerSuccess,
     purchaseBurgerFailed
 } from "./order"
+export {
+    auth
+} from "./auth"
