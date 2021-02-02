@@ -4,11 +4,11 @@ const initialState = {
     ingredients: null,
     // {
     //     // salad: 0,
-    //     // bacon: 0,
-    //     // cheese: 0,
-    //     // meat: 0,
-    //     // mayo: 0,
-    //     // ketchup: 0,
+        // bacon: 0,
+        // cheese: 0,
+        // meat: 0,
+        // mayo: 0,
+        // ketchup: 0,
     // },
     totalPrice: 4,
     error: false
@@ -47,7 +47,14 @@ switch(action.type){
         case actionTypes.SET_INGREDIENTS:
             return{
                 ...state,
-                ingredients: action.ingredients,
+                ingredients: {
+                    salad: action.ingredients.salad,
+                    bacon: action.ingredients.bacon,
+                    cheese: action.ingredients.cheese,
+                    meat:action.ingredients.meat,
+                    mayo: action.ingredients.mayo,
+                    ketchup: action.ingredients.ketchup
+                },
                 error: false
             }
             case actionTypes.FETCH_INGREDIENTS_FAILED:
