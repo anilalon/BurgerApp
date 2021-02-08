@@ -24,6 +24,7 @@ class BurgerBuilder extends Component {
   };
 
   componentDidMount() {
+    console.log(this.props)
     this.props.onInitIngredients();
   }
 
@@ -83,6 +84,7 @@ class BurgerBuilder extends Component {
     );
     let orderSummary = null;
     if (this.props.ings) {
+      console.log("anil fds")
       orderSummary = (
         <OrderSummary
           ingredients={this.props.ings}
@@ -125,17 +127,18 @@ class BurgerBuilder extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state);
   return{
-    ings: state.ingredients,
-    price: state.totalPrice,
-    error: state.error
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    error: state.burgerBuilder.error
   }
 }
 const mapDispatchToProps = dispatch => {
   return{
     onIngredientAdded: (ingName) => dispatch(burgerBuilderActions.addIngredient(ingName)),
     onIngredientRemoved: (ingName) => dispatch(burgerBuilderActions.removeIngredient(ingName)),
-    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients())
+    onInitIngredients: () => dispatch(burgerBuilderActions.initIngredients()  )
   }
 }
 
